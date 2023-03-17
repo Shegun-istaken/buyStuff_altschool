@@ -1,0 +1,120 @@
+:root {
+  --redwood: #b36a5eff;
+  --oxford-blue: #14213dff;
+  --orange-web: #fca311ff;
+  --platinum: #e5e5e5ff;
+  --slate-gray: #6e7e85ff;
+}
+
+.test{
+  color: #fca311;
+  background-color: black;
+}
+
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--platinum);
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  background-color: transparent;
+}
+
+button.cta {
+  background-color: var(--orange-web);
+  color: var(--oxford-blue);
+  font-weight: 700;
+  transition: 0.2s ease-in-out;
+}
+
+button.cta:hover {
+  background-color: hsla(37, 98%, 53%, 0.7);
+}
+
+input:focus{
+  outline: none;
+  border: 1px solid var(--oxford-blue);
+}
+
+/* Styles for sign up and login pages */
+
+main.authforms {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 128px 0 80px;
+  margin: 64px 0px;
+
+}
+
+main.authforms img {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+}
+
+div.authform{
+  background-color: var(--redwood);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 56px;
+  padding: 64px 80px;
+  border-radius: 8px;
+}
+
+div.authform form{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+div.authform label{
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+div.authform input{
+  padding: 10px;
+  border-radius: 8px;
+}
+
+div.authform button.cta{
+  padding: 16px 0;
+  border-radius: 8px;
+}
+
+button.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+}
+button.google img {
+  width: 16px;
+}
+
+div.authform p.smallLogin{
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+div.authform p.smallLogin span{
+  color: var(--orange-web)
+}
+
+div.authform span:hover{
+cursor: pointer;
+}
