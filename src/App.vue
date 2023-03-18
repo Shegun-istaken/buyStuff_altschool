@@ -1,6 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import NavLinks from './components/NavLinks.vue'
+import NavLinks from './components/NavLinks.vue';
+import { onMounted } from 'vue';
+import { authChange } from './composables/isLoggedIn';
+
+onMounted(()=>{
+  authChange()
+})
 </script>
 
 <template>

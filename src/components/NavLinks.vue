@@ -1,6 +1,15 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import logo from '@/assets/images/buyStuff.png'
+import { isLoggedIn } from '../composables/isLoggedIn';
+import { signUserOut } from '../composables/signUserOut';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+function handleSignOut(){
+  signUserOut()
+  router.push('/')
+}
 </script>
 
 <template>
@@ -8,13 +17,16 @@ import logo from '@/assets/images/buyStuff.png'
     <img :src="logo" alt="buyStuff logo" />
     <nav>
       <RouterLink to="/">Home</RouterLink>
-      <div className="access">
+      <div v-if="!isLoggedIn" className="access">
         <RouterLink to="login">
           <button className="cta" >Login</button>
         </RouterLink>
         <RouterLink to="/signup">
           <button className="cta" >Sign Up</button>
         </RouterLink>
+      </div>
+      <div v-else>
+        <button className="cta" @click="handleSignOut">Sign Out</button>
       </div>
     </nav>
   </header>
