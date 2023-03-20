@@ -1,15 +1,17 @@
 <script setup>
-import signup from '@/assets/images/login.png'
+import signup from '@/assets/images/signup.png'
 import google from '@/assets/images/google.png'
-import { reactive, watch } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { useUserStore } from '@/stores/userStore.js'
 
+const user = useUserStore()
 const router = useRouter()
 const state = reactive({
   name: '',
   email: '',
-  password: '',
+  password: ''
 })
 
 function register() {
@@ -17,7 +19,7 @@ function register() {
   createUserWithEmailAndPassword(auth, state.email, state.password, state.displayName)
     .then((data) => {
       console.log('Successfully registered!')
-      console.log(auth.currentUser)
+      user.setUserData(auth.currentUser)
       router.push('/products')
     })
     .catch((error) => {
@@ -27,7 +29,6 @@ function register() {
 }
 
 function signInWithGoogle() {}
-
 </script>
 
 <template>

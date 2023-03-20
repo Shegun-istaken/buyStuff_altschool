@@ -4,6 +4,9 @@ import logo from '@/assets/images/buyStuff.png'
 import { isLoggedIn } from '../composables/isLoggedIn';
 import { signUserOut } from '../composables/signUserOut';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '../stores/userStore';
+
+const user = useUserStore();
 
 const router = useRouter();
 function handleSignOut(){
@@ -25,7 +28,11 @@ function handleSignOut(){
           <button className="cta" >Sign Up</button>
         </RouterLink>
       </div>
-      <div v-else>
+      <div className="access" v-else>
+        <div>
+          <p>{{ `Welcome ${user.userEmailCut}` }}</p>
+          <p><small>{{ user.userData.email }}</small></p>
+        </div>
         <button className="cta" @click="handleSignOut">Sign Out</button>
       </div>
     </nav>
@@ -62,6 +69,10 @@ div.access{
 div.access button{
     padding: 8px 16px;
     border-radius: 4px;
+}
+
+div.access small{
+  opacity: 0.7
 }
 
 </style>

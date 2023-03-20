@@ -1,10 +1,10 @@
 <script setup>
-import { RouterView } from 'vue-router';
-import NavLinks from './components/NavLinks.vue';
-import { onMounted } from 'vue';
-import { authChange } from './composables/isLoggedIn';
+import { RouterView } from 'vue-router'
+import NavLinks from './components/NavLinks.vue'
+import { onMounted } from 'vue'
+import { authChange, userData } from './composables/isLoggedIn'
 
-onMounted(()=>{
+onMounted(() => {
   authChange()
 })
 </script>

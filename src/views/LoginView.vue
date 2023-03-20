@@ -6,6 +6,9 @@ import google from '@/assets/images/google.png'
 import { reactive, watch } from 'vue'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '../stores/userStore'
+
+const user = useUserStore()
 
 const router = useRouter()
 const state = reactive({
@@ -38,7 +41,7 @@ function login() {
   signInWithEmailAndPassword(auth, state.email, state.password)
     .then((data) => {
       console.log('successfully signed in!!')
-      console.log(auth.currentUser)
+      user.setUserData(auth.currentUser)
       router.push('/products')
     })
     .catch((error) => {

@@ -1,19 +1,24 @@
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+// import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 export const useUserStore = defineStore('user', () => {
-  function check() {
-    const auth = getAuth()
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user, 'newTest')
-      } else {
-        console.log('no-user')
-      }
-    })
-  }
+  const userData = ref('')
+  const userEmailCut = ref("");
 
-  return {check}
+  function setUserData(value) {
+    userData.value = value;
+    userEmailCut.value = value.email.split('@')[0]
+  }
+  //     const auth = getAuth()
+  //     onAuthStateChanged(auth, (user) => {
+  //       if (user) {
+  //         userData.value = user.email.split('@')[0]
+  //       }
+  //     })
+
+  //     return {check}
+  //   }
+  return { userData, userEmailCut, setUserData,  }
 })
