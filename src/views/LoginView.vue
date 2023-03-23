@@ -40,8 +40,6 @@ function login() {
   const auth = getAuth()
   signInWithEmailAndPassword(auth, state.email, state.password)
     .then((data) => {
-      console.log('successfully signed in!!')
-      user.setUserData(auth.currentUser)
       router.push('/products')
     })
     .catch((error) => {

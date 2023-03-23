@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import hero from '@/assets/images/hero.png'
 import GetStartedButton from '../components/atoms/GetStartedButton.vue'
+
 </script>
 
 <template>

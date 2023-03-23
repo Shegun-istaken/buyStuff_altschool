@@ -5,9 +5,7 @@ const isLoggedIn = ref(false)
 let userData = ref('')
 
 function authChange() {
-  let auth
-
-  auth = getAuth()
+  const auth = getAuth()
   onAuthStateChanged(auth, (user) => {
     if (user) {
       isLoggedIn.value = true

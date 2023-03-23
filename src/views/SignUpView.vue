@@ -18,8 +18,6 @@ function register() {
   const auth = getAuth()
   createUserWithEmailAndPassword(auth, state.email, state.password, state.displayName)
     .then((data) => {
-      console.log('Successfully registered!')
-      user.setUserData(auth.currentUser)
       router.push('/products')
     })
     .catch((error) => {

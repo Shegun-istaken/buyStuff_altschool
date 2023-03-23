@@ -1,15 +1,15 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import logo from '@/assets/images/buyStuff.png'
-import { isLoggedIn } from '../composables/isLoggedIn';
-import { signUserOut } from '../composables/signUserOut';
-import { useRouter } from 'vue-router';
-import { useUserStore } from '../stores/userStore';
+import { isLoggedIn } from '../composables/isLoggedIn'
+import { signUserOut } from '../composables/signUserOut'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '../stores/userStore'
 
-const user = useUserStore();
+const user = useUserStore()
+const router = useRouter()
 
-const router = useRouter();
-function handleSignOut(){
+function handleSignOut() {
   signUserOut()
   router.push('/')
 }
@@ -22,16 +22,18 @@ function handleSignOut(){
       <RouterLink to="/">Home</RouterLink>
       <div v-if="!isLoggedIn" className="access">
         <RouterLink to="login">
-          <button className="cta" >Login</button>
+          <button className="cta">Login</button>
         </RouterLink>
         <RouterLink to="/signup">
-          <button className="cta" >Sign Up</button>
+          <button className="cta">Sign Up</button>
         </RouterLink>
       </div>
       <div className="access" v-else>
         <div>
-          <p>{{ `Welcome ${user.userEmailCut}` }}</p>
-          <p><small>{{ user.userData.email }}</small></p>
+          <p>{{ `Welcome ${user.userData.email.split('@')[0]}` }}</p>
+          <p>
+            <small>{{ user.userData.email }}</small>
+          </p>
         </div>
         <button className="cta" @click="handleSignOut">Sign Out</button>
       </div>
@@ -60,19 +62,18 @@ img {
   width: 128px;
 }
 
-div.access{
-    display: flex;
-    align-items: center;
-    gap: 16px;
+div.access {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-div.access button{
-    padding: 8px 16px;
-    border-radius: 4px;
+div.access button {
+  padding: 8px 16px;
+  border-radius: 4px;
 }
 
-div.access small{
-  opacity: 0.7
+div.access small {
+  opacity: 0.7;
 }
-
 </style>

@@ -2,11 +2,15 @@
 import { RouterView } from 'vue-router'
 import NavLinks from './components/NavLinks.vue'
 import { onMounted } from 'vue'
-import { authChange, userData } from './composables/isLoggedIn'
+import { authChange } from './composables/isLoggedIn'
+import { useUserStore } from '@/stores/userStore.js';
+const user = useUserStore()
 
 onMounted(() => {
   authChange()
+  user.updateAuth()
 })
+
 </script>
 
 <template>

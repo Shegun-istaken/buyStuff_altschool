@@ -32,7 +32,14 @@ const router = createRouter({
       meta: {
         requiresAuth: true
       },
-      component: () => import('@/views/ProductsView.vue')
+      component: () => import('@/views/ProductsView.vue'),
+      children:[
+        {
+          path: '/products/:id',
+          name: 'product',
+          component: ()=>import('@/components/ProductDetails.vue'),
+        },
+      ]
     },
     {
       path: "/:pathMatch(.*)*",
@@ -60,7 +67,7 @@ router.beforeEach(async (to, from, next) => {
     if (await getCurrentUser()) {
       next()
     } else {
-      next('/login')
+      next('/signup')
     }
   } else if (to.matched.some((record) => record.meta.isNotLoggedIn)) {
     if (await getCurrentUser()) {
