@@ -75,4 +75,14 @@ div.categories li.categories {
   border: 0.1px solid var(--orange-web);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 400px){
+
+  button.categories {
+
+  padding: 4px 8px;
+    font-size: 12px;
+}
+
+}
 </style>

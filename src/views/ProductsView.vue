@@ -29,4 +29,11 @@ main.ProductsView {
   flex-direction: column;
   gap: 16px;
 }
+
+@media only screen and (max-width: 400px) {
+  main.ProductsView {
+    margin: 0px 16px 0px 48px;
+    padding: 0;
+  }
+}
 </style>

@@ -2,8 +2,7 @@
 import { getAll } from '../composables/fetchData'
 import ProductItem from '@/components/ProductItem.vue'
 import { useProductStore } from '../stores/productStore'
-// import { onMounted } from 'vue'
-
+import PaginationButtons from './PaginationButtons.vue'
 
 const products = useProductStore()
 
@@ -11,21 +10,32 @@ getAll()
 </script>
 
 <template>
-  <main className="products" v-if="products.products">
-    <ProductItem v-for="product in products.products" :product="product" :key="product.id" />
-  </main>
+  <div v-if="products.products">
+    <main className="products">
+      <ProductItem v-for="product in products.products" :product="product" :key="product.id" />
+    </main>
+    <PaginationButtons />
+  </div>
 </template>
 
 <style scoped>
 main.products {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 48px;
   margin: 24px 0px;
 }
 
-main.otherMain{
+main.otherMain {
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (max-width: 960px){
+
+  main.products{
+    gap: 8px;
+  }
 }
 </style>

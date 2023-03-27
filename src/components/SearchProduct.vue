@@ -22,8 +22,11 @@ function handleShowButton() {
 <template>
   <div className="search">
     <input type="text" placeholder="Search" v-model="searchValue" />
-    <img :src="search" alt="search icon in a search box" />
-    <button @click="handleSearch">Search</button>
+    <img className="placeholderIcon" :src="search" alt="search icon in a search box" />
+    <button className="searchButton" @click="handleSearch">
+      <p>Search</p>
+      <img :src="search" alt="search icon" />
+    </button>
   </div>
   <button v-if="showButton" className="showAll cta" @click="handleShowButton">
     Show All Products
@@ -49,7 +52,7 @@ input:hover {
   border-color: var(--orange-web);
 }
 
-div.search img {
+div.search img.placeholderIcon {
   position: absolute;
   left: 24px;
   top: 12px;
@@ -70,5 +73,33 @@ button.showAll {
   margin: 8px 0px;
   background-color: var(--oxford-blue);
   color: var(--platinum);
+}
+
+button.searchButton > img {
+  display: none;
+}
+
+@media only screen and (max-width: 400px) {
+  div.search input {
+    padding: 16px 0px 16px 16px;
+  }
+  div.search button.searchButton {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 4px;
+  }
+  button.searchButton > img {
+    display: inline-block;
+    width: 24px;
+  }
+  button.searchButton > p {
+    display: none;
+  }
+
+  div.search img.placeholderIcon {
+    display: none;
+  }
 }
 </style>

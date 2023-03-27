@@ -37,7 +37,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 72px 0px;
+  margin: 72px 16px 72px 20px;
 }
 
 main > div {
@@ -74,4 +74,39 @@ aside p {
   padding: 48px;
   font-weight: 100;
 }
+
+@media only screen and (max-width: 1024px){
+
+  main > div h1 {
+  width: 100%;
+}
+
+main > div p {
+  width: 100%;
+}
+
+}
+
+@media only screen and (max-width: 870px){
+
+  main{
+    flex-direction: column;
+    text-align: center;
+    row-gap: 16px;
+  }
+
+  main >div{
+    width: 80%;
+  }
+
+}
+
+@media only screen and (max-width: 370px){
+
+  main > img{
+    display: none;
+  }
+
+}
+
 </style>

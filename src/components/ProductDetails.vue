@@ -55,10 +55,10 @@ function exit() {
   router.push('/products')
 }
 
-function mainExit(event){
-    if (!event.target.closest('.detailsModal')){
-        router.push('/products')
-    }
+function mainExit(event) {
+  if (!event.target.closest('.detailsModal')) {
+    router.push('/products')
+  }
 }
 </script>
 
@@ -80,7 +80,7 @@ function mainExit(event){
           <p>{{ `$${product.price}` }}</p>
         </div>
 
-        <p>
+        <p className="description">
           {{ product.description }} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim
           reiciendis aperiam tenetur eos at perspiciatis corrupti. Est veniam, excepturi quas
           exercitationem non eius minus optio iure voluptatem maxime, fugiat cumque. Nesciunt
@@ -123,10 +123,11 @@ div.detailsModal {
   position: fixed;
   z-index: 2;
   background-color: white;
-  width: 1024px;
+  width: 880px;
   top: 48px;
-  left: -512px;
-  margin-left: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
   border-radius: 8px;
   height: 480px;
   display: flex;
@@ -209,5 +210,56 @@ button.cartButton {
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+@media only screen and (max-width: 1024px){
+
+  div.detailsModal{
+    width: 720px;
+  }
+
+  div.modalDetails > p{
+    font-size: 12px;
+  }
+
+}
+
+@media only screen and (max-width: 810px){
+
+  div.detailsModal{
+    width: 320px;
+    flex-direction: column;
+    /* height: auto; */
+    /* overflow: auto; */
+  }
+
+  div.modalImages{
+    width: 98%;
+    border: none;
+    padding: 8px 8px;
+  }
+  .modalImages img{
+    height: 160px;
+  }
+
+  p.description{
+    height:48px;
+    overflow: auto;
+  }
+
+  div.modalDetails{
+    width: 90%;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+}
+
+@media only screen and (max-width: 290){
+
+  div.detailsModal{
+    width: 160px;
+  }
+
 }
 </style>

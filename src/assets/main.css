@@ -19,11 +19,17 @@
 
 html {
   box-sizing: border-box;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   background-color: var(--platinum);
   font-family: 'Open Sans', sans-serif;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 button {
@@ -60,7 +66,7 @@ main.authforms {
 
 main.authforms img {
   width: 100%;
-  max-width: 640px;
+  max-width: 560px;
   height: auto;
 }
 
@@ -117,4 +123,78 @@ div.authform p.smallLogin span{
 
 div.authform span:hover{
 cursor: pointer;
+}
+
+@media only screen and (max-width: 1180px){
+
+  main.authforms{
+    padding-left: 24px;
+  }
+
+  main.authforms > img{
+    max-width: 320px;
+  }
+
+  div.authform form{
+    width: 256px;
+  }
+}
+
+@media only screen and (max-width: 870px){
+  main.authforms{
+    padding: 0px 64px;
+  }
+ 
+  main.authforms > img{
+    display: none;
+  }
+
+  main.authforms >div{
+    width: 100%;
+  }
+
+  main.authforms form{
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 520px){
+
+  main.authforms{
+    padding: 0px 12px;
+ 
+    justify-content: center;
+    margin: 48px auto;
+    /* padding: 0px; */
+  }
+
+ main.authforms div.authform{
+    padding: 32px 32px;
+    gap: 24px;
+    width: 220px;
+  }
+
+  div.authform h1{
+    font-size: 24px;
+  }
+
+  div.authform h3{
+    font-size: 14px;
+  }
+
+}
+
+@media only screen and (max-width: 320px){
+
+  main.authforms{
+    margin: 48px 0px;
+    align-items: center;
+  }
+
+  main.authforms div.authform{
+    width: 160px;
+  }
+
+  /* div */
+
 }

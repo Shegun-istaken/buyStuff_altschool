@@ -9,7 +9,7 @@ async function fetchData(link) {
 }
 
 function getAll() {
-  fetchData('https://dummyjson.com/products')
+  fetchData(`https://dummyjson.com/products?limit=${products.pagination.limit}&skip=${products.pagination.skip}`)
 }
 
 async function fetchCategories() {

@@ -17,7 +17,11 @@ function openDetails() {
   <div v-if="props.product" className="main" @click="openDetails">
     <img :src="props.product.thumbnail" :alt="` ${props.product.title} thumbnail`" />
     <h2>
-      {{ props.product.title.length < 15 ? props.product.title : `${props.product.title.slice(0, 14)}...` }}
+      {{
+        props.product.title.length < 15
+          ? props.product.title
+          : `${props.product.title.slice(0, 14)}...`
+      }}
     </h2>
 
     <div className="price">
@@ -50,5 +54,59 @@ div.main img {
 div.price {
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 1024px) {
+  div.main {
+    width: 176px;
+  }
+
+  div.main img {
+    height: 192px;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  div.main {
+    width: 152px;
+    gap: 16px;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  div.main {
+    width: 128px;
+    gap: 16px;
+  }
+  div.main img {
+    height: 128px;
+  }
+  div.main h2{
+    font-size: 16px;
+  }
+
+  div.main p{
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px){
+
+
+  div.main{
+    width: 100%;
+  }
+  div.main img{
+    height: 160px;
+  }
+
+}
+
+@media only screen and (max-width: 400px){
+
+  div.main img{
+    height: 80px;
+  }
+
 }
 </style>
