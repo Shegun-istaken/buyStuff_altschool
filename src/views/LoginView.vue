@@ -4,7 +4,12 @@
 import loginImg from '@/assets/images/login.png'
 import google from '@/assets/images/google.png'
 import { reactive, watch } from 'vue'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
+} from 'firebase/auth'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -45,14 +50,18 @@ function login() {
 }
 
 function signInWithGoogle() {
-  const provider = new GoogleAuthProvider();
+  const provider = new GoogleAuthProvider()
   signInWithPopup(getAuth(), provider)
-  .then((data) => {
+    .then((data) => {
       router.push('/products')
     })
     .catch((error) => {
       alert(error.message)
     })
+}
+
+function goToSignUp() {
+  router.push('/signup')
 }
 </script>
 
@@ -73,7 +82,8 @@ function signInWithGoogle() {
           Login with Google <img :src="google" alt="google icon" />
         </button>
         <p className="smallLogin">
-          Don't have an account? <span>Click here to Register with BuyStuff</span>
+          Don't have an account?
+          <span @click="goToSignUp">Click here to Register with BuyStuff</span>
         </p>
       </form>
     </div>

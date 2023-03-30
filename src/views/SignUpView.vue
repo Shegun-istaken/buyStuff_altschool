@@ -35,6 +35,10 @@ function signInWithGoogle() {
       alert(error.message)
     })
 }
+
+function goToLogin(){
+  router.push('/login')
+}
 </script>
 
 <template>
@@ -60,7 +64,7 @@ function signInWithGoogle() {
         <button className="google cta" @click.prevent="signInWithGoogle">
           Sign Up with Google <img :src="google" alt="google icon" />
         </button>
-        <p className="smallLogin">Already have an account? <span>Click here to Login</span></p>
+        <p className="smallLogin">Already have an account? <span @click="goToLogin">Click here to Login</span></p>
       </form>
     </div>
   </main>
