@@ -238,7 +238,7 @@ button.cartButton {
   }
 
   div.modalImages{
-    width: 98%;
+    width: 94%;
     border: none;
     padding: 8px 8px;
   }
@@ -255,6 +255,13 @@ button.cartButton {
     width: 90%;
     gap: 16px;
     margin-bottom: 8px;
+  }
+
+  div.modalImages button{
+    font-size: 24px;
+    background-color: var(--orange-web);
+    border-radius: 8px;
+    padding: 8px 8px;
   }
 
 }
