@@ -33,18 +33,27 @@ const router = createRouter({
         requiresAuth: true
       },
       component: () => import('@/views/ProductsView.vue'),
-      children:[
+      children: [
         {
           path: '/products/:id',
           name: 'product',
-          component: ()=>import('@/components/ProductDetails.vue'),
-        },
+          meta: {
+            dynamic: true
+          },
+          component: () => import('@/components/ProductDetails.vue'),
+
+        }
       ]
     },
     {
-      path: "/:pathMatch(.*)*",
+      path: '/cart',
+      name: 'cart',
+      component: () => import('@/views/CartView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
       name: 'pageNotFound',
-      component: ()=>import('@/views/PageNotFound.vue')
+      component: () => import('@/views/PageNotFound.vue')
     }
   ]
 })
@@ -78,6 +87,10 @@ router.beforeEach(async (to, from, next) => {
   } else {
     next()
   }
+
+  // if (from.fullPath != '/products' && to.matched.some((record) => record.meta.dynamic)) {
+  //   next('/')
+  // }
 })
 
 export default router

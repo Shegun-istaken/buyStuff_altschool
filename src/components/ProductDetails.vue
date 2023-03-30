@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { onMounted, watch } from 'vue'
 import star from '@/assets/images/star.svg'
 import cart from '@/assets/images/cart.svg'
+import {addToCart} from "@/composables/addtoCart.js"
 
 const routes = useRoute()
 const router = useRouter()
@@ -74,8 +75,7 @@ function mainExit(event) {
       <div className="modalDetails">
         <button className="x" @click="exit">X</button>
         <div className="title">
-          <h2>
-            {{ product.title.length < 15 ? product.title : product.title.slice(0, 14) }}
+          <h2 className="title">{{ product.title }}
           </h2>
           <p>{{ `$${product.price}` }}</p>
         </div>
@@ -99,7 +99,7 @@ function mainExit(event) {
           <p>{{ `-${product.discountPercentage}%` }}</p>
         </div>
 
-        <button className="cta cartButton">
+        <button className="cta cartButton" @click="addToCart">
           Add to Cart <img :src="cart" alt="cart icon" className="cart" />
         </button>
       </div>
@@ -161,6 +161,10 @@ div.modalDetails {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 24px;
+}
+
+h2.title{
+  width: 80%;
 }
 
 button.x {

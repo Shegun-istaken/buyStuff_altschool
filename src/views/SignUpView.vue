@@ -3,7 +3,7 @@ import signup from '@/assets/images/signup.png'
 import google from '@/assets/images/google.png'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useUserStore } from '@/stores/userStore.js'
 
 const user = useUserStore()
@@ -21,12 +21,20 @@ function register() {
       router.push('/products')
     })
     .catch((error) => {
-      console.log(error.code)
       alert(error.message)
     })
 }
 
-function signInWithGoogle() {}
+function signInWithGoogle() {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+  .then((data) => {
+      router.push('/products')
+    })
+    .catch((error) => {
+      alert(error.message)
+    })
+}
 </script>
 
 <template>
@@ -49,7 +57,7 @@ function signInWithGoogle() {}
         <label>Password <input type="password" v-model="state.password" /> </label>
 
         <button className="cta" @click.prevent="register">Sign Up</button>
-        <button className="google cta" @click.prevent="">
+        <button className="google cta" @click.prevent="signInWithGoogle">
           Sign Up with Google <img :src="google" alt="google icon" />
         </button>
         <p className="smallLogin">Already have an account? <span>Click here to Login</span></p>

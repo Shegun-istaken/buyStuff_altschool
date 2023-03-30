@@ -35,9 +35,11 @@ watch(
       Previous
     </button>
 
+    <div className="pageSwitch">
     <button v-if="products.pagination.page > 1" @click="products.setPagination('one')">1</button>
     <button className="presentPage">{{ products.pagination.page }}</button>
     <button v-if="products.pagination.page < 10" @click="products.setPagination('ten')">10</button>
+  </div>
     <button
       @click="products.setPagination('next')"
       :className="`mainButtons ${disabled.next && 'disabled'}`"
@@ -48,7 +50,7 @@ watch(
 </template>
 
 <style scoped>
-div.pagination {
+div.pagination, div.pageSwitch {
   display: flex;
   gap: 48px;
   justify-content: center;
@@ -70,5 +72,14 @@ button.presentPage{
   color: var(--platinum);
   padding: 16px 24px;
   border-radius: 8px;
+}
+
+@media only screen and (max-width: 480px){
+
+  div.pagination{
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
 }
 </style>
